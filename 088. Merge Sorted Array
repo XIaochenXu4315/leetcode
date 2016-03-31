@@ -1,0 +1,23 @@
+public class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int[] nums0 = nums1.clone();
+        int pm=0, pn=0;
+        for(int i =0; i < m+n; i++){
+            if(pm<m && pn<n){
+                if(nums0[pm]<nums2[pn]){
+                    nums1[i] = nums0[pm];
+                    pm++;
+                }else{
+                    nums1[i] = nums2[pn];
+                    pn++;
+                }
+            }else if(pm<m){
+                nums1[i] = nums0[pm];
+                pm++;
+            }else if(pn<n){
+                nums1[i] = nums2[pn];
+                pn++;
+            }
+        }
+    }
+}
