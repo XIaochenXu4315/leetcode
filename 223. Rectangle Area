@@ -1,0 +1,14 @@
+public class Solution {
+    public int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
+        int rec1=0,rec2=0,rec3=0,exist1=1,exist2=1;
+        if(C>A&&D>B) rec1=(C-A)*(D-B);
+        else exist1=0;
+        if(G>E&&H>F) rec2=(G-E)*(H-F);
+        else exist2=0;
+        if(exist1==1&&exist2==1) {
+            if(E>C||F>D||A>G||B>H) rec3=0; 
+            else rec3=(Math.min(C,G)-Math.max(A,E))*(Math.min(D,H)-Math.max(B,F));
+        }
+        return rec1+rec2-rec3;
+    }
+}
