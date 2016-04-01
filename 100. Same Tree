@@ -1,0 +1,34 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        
+        System.out.println(preOrder(p));
+        System.out.println(preOrder(q));
+        String pp = preOrder(p);
+        String qq = preOrder(q);
+        if(pp==null&&qq==null)
+            return true;
+        else if(pp==null&&qq!=null||pp!=null&&qq==null)
+            return false;
+        else
+            return preOrder(p).equals(preOrder(q));
+    }
+    public String preOrder(TreeNode t){
+        String pre = new String();
+        if(t!=null)
+            pre = Integer.toString(t.val);
+        else
+            return "hehe";
+        pre = pre + preOrder(t.left);
+        pre = pre + preOrder(t.right);
+        return pre;
+    }
+}
